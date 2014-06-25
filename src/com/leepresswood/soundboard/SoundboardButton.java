@@ -3,6 +3,7 @@ package com.leepresswood.soundboard;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 public class SoundboardButton extends JButton
 {
@@ -42,7 +43,7 @@ public class SoundboardButton extends JButton
 	
 	private void onRightClick()
 	{
-		
+		JOptionPane.showInputDialog("Test");
 	}
 	
 	private void onLeftClick()
