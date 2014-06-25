@@ -11,9 +11,6 @@ public class SoundboardButton extends JButton
 	public SoundboardButton(int button_number, String text)
 	{
 		this.button_number = button_number;
-		this.setSize(50, 50);
-		this.setMinimumSize(this.getSize());
-		this.setMaximumSize(this.getSize());
 		
 		//Create the mouse listener that handles right and left clicks
 		this.addMouseListener(new MouseListener()
