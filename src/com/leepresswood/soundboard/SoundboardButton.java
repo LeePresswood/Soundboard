@@ -60,17 +60,18 @@ public class SoundboardButton extends JButton
 		//File chooser
 		final JTextArea field = new JTextArea(5,20);
 		JButton file_button = new JButton("...");
-		final JFileChooser fc = new JFileChooser();		
-		//fc.showDialog(sb, "Hi");
+		;		
+		//fc.showOpenDialog(SoundboardButton.this);
 		file_button.addActionListener(new ActionListener()
 		{			
 			@Override
-			public 
-			void actionPerformed(ActionEvent arg0)
+			public void actionPerformed(ActionEvent arg0)
 			{
+				final JFileChooser fc = new JFileChooser();
 				fc.showOpenDialog(SoundboardButton.this);
 				field.setText(fc.getSelectedFile().toPath().toString());
 				new_file = fc.getSelectedFile();
+				System.out.println("Here");
 			}
 		});
 		
