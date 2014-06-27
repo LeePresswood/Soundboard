@@ -57,10 +57,12 @@ public class SoundboardButton extends JButton
 	
 	private void onRightClick()
 	{		
+		JDialog dialog = new JDialog();
+		
 		//File chooser
 		final JTextArea field = new JTextArea(5,20);
 		JButton file_button = new JButton("...");
-		;		
+			
 		//fc.showOpenDialog(SoundboardButton.this);
 		file_button.addActionListener(new ActionListener()
 		{			
@@ -71,18 +73,16 @@ public class SoundboardButton extends JButton
 				fc.showOpenDialog(SoundboardButton.this);
 				field.setText(fc.getSelectedFile().toPath().toString());
 				new_file = fc.getSelectedFile();
-				System.out.println("Here");
 			}
 		});
-		
-		JDialog dialog = new JDialog();
+				
 		dialog.setSize(new Dimension(500, 350));
 		dialog.setPreferredSize(dialog.getSize());
 		dialog.setMinimumSize(dialog.getSize());
 		dialog.setContentPane(new JPanel());
 		dialog.add(new JLabel("Sound File:"));
 		dialog.add(field);
-		dialog.add(new JButton("..."));
+		dialog.add(file_button);
 		dialog.setVisible(true);
 	}
 	
