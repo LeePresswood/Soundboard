@@ -30,7 +30,7 @@ public class SoundboardFrame extends JFrame
 		for(int y = 0; y < 5; y++)
 			for(int x = 0; x < 5; x++)
 			{
-				buttons[y][x] = new SoundboardButton(y * 10 + x, "Hello");
+				buttons[y][x] = new SoundboardButton(y * 10 + x);
 				this.getContentPane().add(buttons[y][x]);
 			}
 	}

@@ -23,10 +23,14 @@ import javax.swing.SpringLayout;
 
 public class SoundboardButton extends JButton
 {
-	public int button_number;
-	public File new_file;
+	private int button_number;
+	private File old_file;
+	private File new_file;
+	private String old_text;
+	private String new_text;
 	
-	public SoundboardButton(int button_number, String text)
+	
+	public SoundboardButton(int button_number)
 	{
 		this.button_number = button_number;
 		
@@ -55,7 +59,7 @@ public class SoundboardButton extends JButton
 			public void mouseClicked(MouseEvent arg0){}
 		});
 		
-		this.setText(text);
+		//this.setText(text);
 	}
 	
 	private void onRightClick()
@@ -67,9 +71,8 @@ public class SoundboardButton extends JButton
 		dialog.setMinimumSize(dialog.getSize());
 		dialog.setContentPane(new JPanel(new GridLayout(2, 3, 0, 3)));
 		
-		//File Chooser Row
-		dialog.getContentPane().add(new JLabel("Sound File:"));
-		final JTextArea field = new JTextArea(5,20);
+		//File Chooser Row		
+		final JTextArea file_field = new JTextArea();
 		JButton file_button = new JButton("...");			
 		file_button.addActionListener(new ActionListener()
 		{			
@@ -80,18 +83,30 @@ public class SoundboardButton extends JButton
 				fc.showOpenDialog(SoundboardButton.this);
 				if(fc.getSelectedFile() != null)
 				{
-					field.setText(fc.getSelectedFile().toPath().toString());
+					file_field.setText(fc.getSelectedFile().toPath().toString());
 					new_file = fc.getSelectedFile();
 				}
 			}
-		});		
-		dialog.getContentPane().add(field);
+		});	
+		dialog.getContentPane().add(new JLabel("Sound File:"));
+		dialog.getContentPane().add(file_field);
 		dialog.getContentPane().add(file_button);
 				
 		//Button Text Row
+		final JTextArea text_field = new JTextArea();
+		JButton text_button = new JButton("Confirm Changes");
+		text_button.addActionListener(new ActionListener()
+		{			
+			@Override
+			public void actionPerformed(ActionEvent arg0)
+			{
+				
+			}
+		});		
 		dialog.getContentPane().add(new JLabel("Button Text:"));
-		dialog.getContentPane().add(new JTextArea());
-		dialog.getContentPane().add(new JButton("Confirm Changes"));
+		dialog.getContentPane().add(text_field);
+		dialog.getContentPane().add(text_button);
+		
 		dialog.setVisible(true);
 	}
 	
