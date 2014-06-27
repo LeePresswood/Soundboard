@@ -1,6 +1,7 @@
 package com.leepresswood.soundboard;
 
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +10,7 @@ import java.awt.event.MouseListener;
 import java.beans.PropertyChangeListener;
 import java.io.File;
 import javax.swing.Action;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
@@ -17,6 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SpringLayout;
 
 public class SoundboardButton extends JButton
 {
@@ -58,12 +61,16 @@ public class SoundboardButton extends JButton
 	private void onRightClick()
 	{		
 		JDialog dialog = new JDialog();
+		dialog.setResizable(false);
+		dialog.setSize(new Dimension(500, 350));
+		dialog.setPreferredSize(dialog.getSize());
+		dialog.setMinimumSize(dialog.getSize());
+		dialog.setContentPane(new JPanel(new GridLayout(2, 3, 0, 3)));
 		
-		//File chooser
+		//File Chooser Row
+		dialog.getContentPane().add(new JLabel("Sound File:"));
 		final JTextArea field = new JTextArea(5,20);
-		JButton file_button = new JButton("...");
-			
-		//fc.showOpenDialog(SoundboardButton.this);
+		JButton file_button = new JButton("...");			
 		file_button.addActionListener(new ActionListener()
 		{			
 			@Override
@@ -71,18 +78,20 @@ public class SoundboardButton extends JButton
 			{
 				final JFileChooser fc = new JFileChooser();
 				fc.showOpenDialog(SoundboardButton.this);
-				field.setText(fc.getSelectedFile().toPath().toString());
-				new_file = fc.getSelectedFile();
+				if(fc.getSelectedFile() != null)
+				{
+					field.setText(fc.getSelectedFile().toPath().toString());
+					new_file = fc.getSelectedFile();
+				}
 			}
-		});
+		});		
+		dialog.getContentPane().add(field);
+		dialog.getContentPane().add(file_button);
 				
-		dialog.setSize(new Dimension(500, 350));
-		dialog.setPreferredSize(dialog.getSize());
-		dialog.setMinimumSize(dialog.getSize());
-		dialog.setContentPane(new JPanel());
-		dialog.add(new JLabel("Sound File:"));
-		dialog.add(field);
-		dialog.add(file_button);
+		//Button Text Row
+		dialog.getContentPane().add(new JLabel("Button Text:"));
+		dialog.getContentPane().add(new JTextArea());
+		dialog.getContentPane().add(new JButton("Confirm Changes"));
 		dialog.setVisible(true);
 	}
 	
