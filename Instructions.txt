@@ -1,0 +1,9 @@
+1) Put your audio clips in the "sounds" folder. They can be any non-extreme length. I haven't tested all the possibilities, but I know .wav and .mp3 files both work.
+
+2) From inside the application, right-click any of the buttons. You will be met with a dialogue that asks you to find the correct file and add text to the button.
+	- Click the "..." button to open a file selection screen. The file you choose may be anywhere on your computer, but for the sake of simplicity, you might as well enter the aforementioned "sounds" folder.
+	- Change the bottom text box to whatever text you want on the actual button. For instance: An onomatopoeia of the effect or the text for a line of dialogue."
+
+3) Click the confirmation button to save the results of the two boxes you filled. If you are unhappy with the changes, just exit out of this box. Nothing will be changed.
+
+4) To play your sound, left-click on the button you just edited.

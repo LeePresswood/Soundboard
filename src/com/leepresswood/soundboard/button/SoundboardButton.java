@@ -103,7 +103,8 @@ public class SoundboardButton extends JButton
 	
 	private void onLeftClick()
 	{
-		try {
+		try 
+		{
 			AudioClip clip = Applet.newAudioClip(new URL("file:///" + file));
 			clip.play();
 		} catch (MalformedURLException murle) {
