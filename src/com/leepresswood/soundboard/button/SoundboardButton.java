@@ -12,6 +12,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import com.leepresswood.soundboard.file.WriteToFile;
 
 public class SoundboardButton extends JButton
 {
@@ -19,7 +20,6 @@ public class SoundboardButton extends JButton
 	private String old_file;
 	private String new_file;
 	private String old_text;
-	private String new_text;
 		
 	public SoundboardButton(int button_number, String button_path, String button_text)
 	{
@@ -35,7 +35,7 @@ public class SoundboardButton extends JButton
 	
 	private void onRightClick()
 	{		
-		JDialog dialog = new JDialog();
+		final JDialog dialog = new JDialog();
 		dialog.setSize(new Dimension(500, 350));
 		dialog.setResizable(false);		
 		dialog.setPreferredSize(dialog.getSize());
@@ -55,7 +55,7 @@ public class SoundboardButton extends JButton
 				if(fc.getSelectedFile() != null)
 				{
 					file_field.setText(fc.getSelectedFile().toPath().toString());
-					new_file = fc.getSelectedFile().toString();
+					new_file = fc.getSelectedFile().toPath().toString();
 				}
 			}
 		});	
@@ -71,7 +71,11 @@ public class SoundboardButton extends JButton
 			@Override
 			public void actionPerformed(ActionEvent arg0)
 			{//Confirmation button. Replace saved file and saved text with the new ones.
+				old_file = new_file;
+				old_text = text_field.getText();
+				new WriteToFile(button_number, old_file, old_text);
 				
+				dialog.setVisible(false);
 			}
 		});		
 		dialog.getContentPane().add(new JLabel("Button Text:"));
