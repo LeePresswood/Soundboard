@@ -50,7 +50,7 @@ public class SoundboardButton extends JButton
 			@Override
 			public void actionPerformed(ActionEvent arg0)
 			{//Open a file chooser dialog.
-				final JFileChooser fc = new JFileChooser();
+				final JFileChooser fc = new JFileChooser(System.getProperty("user.dir"));
 				fc.showOpenDialog(SoundboardButton.this);
 				if(fc.getSelectedFile() != null)
 				{
