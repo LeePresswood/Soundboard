@@ -29,8 +29,8 @@ public class SoundboardFrame extends JFrame
 	{//There should be 5 rows of 5 buttons.
 		SoundboardButton[][] buttons = new SoundboardButton[5][5];
 		
-		for(int y = 0; y < 5; y++)
-			for(int x = 0; x < 5; x++)
+		for(int y = 0; y < Main.NUMBER_BUTTONS_DOWN; y++)
+			for(int x = 0; x < Main.NUMBER_BUTTONS_ACROSS; x++)
 			{
 				int button_number = y * 10 + x;
 				GetFromFile getter = new GetFromFile(button_number);

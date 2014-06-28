@@ -28,9 +28,8 @@ public class SoundboardButton extends JButton
 	private File new_file;
 	private String old_text;
 	private String new_text;
-	
-	
-	public SoundboardButton(int button_number)
+		
+	public SoundboardButton(int button_number, String button_path, String button_text)
 	{
 		this.button_number = button_number;
 		
