@@ -37,14 +37,20 @@ public class SoundboardButton extends JButton
 		this.addMouseListener(new MouseListenerButtonClass());
 	}
 	
-	private void onRightClick()
-	{		
+	private JDialog makeDialog()
+	{
 		final JDialog dialog = new JDialog();
 		dialog.setSize(new Dimension(700, 500));
 		dialog.setResizable(false);		
 		dialog.setPreferredSize(dialog.getSize());
 		dialog.setMinimumSize(dialog.getSize());
 		dialog.setContentPane(new JPanel(new GridLayout(2, 3, 0, 3)));
+		return dialog;
+	}
+	
+	private void onRightClick()
+	{		
+		final JDialog dialog = makeDialog();
 		
 		//File Chooser Row		
 		final JTextArea file_field = new JTextArea(this.file);
