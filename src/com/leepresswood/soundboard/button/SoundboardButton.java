@@ -17,6 +17,8 @@ import com.leepresswood.soundboard.file.WriteToFile;
 
 public class SoundboardButton extends JButton
 {
+	private static final long serialVersionUID = 8557918897168857910L;
+	
 	private int button_number;
 	private String file;
 	private String text;

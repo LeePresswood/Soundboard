@@ -14,12 +14,12 @@ public class WriteToFile
 		try
 		{
 			writer = new PrintWriter(path_to_file, "UTF-8");
+			writer.println(new_path);
+			writer.println(new_text);
+			writer.close();
 		} catch (FileNotFoundException | UnsupportedEncodingException e)
 		{
 			e.printStackTrace();
-		}
-		writer.println(new_path);
-		writer.println(new_text);
-		writer.close();
+		}		
 	}
 }

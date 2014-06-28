@@ -13,16 +13,28 @@ import com.leepresswood.soundboard.file.GetFromFile;
 
 public class SoundboardFrame extends JFrame
 {
+	private static final long serialVersionUID = -1248101730864445577L;
+
 	public SoundboardFrame()
 	{
 		super("Soundboard");
+		this.initialize();			
+	}
+	
+	private void initialize()
+	{//Initialize the frame.
+		//Frame properties
 		this.setSize(1080, 720);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setMenuBar(new MenuBar());
+		
+		//Menu bar for reset
 		this.getMenuBar().add(new Menu("Reset to default..."));
 		this.getMenuBar().getMenu(0).add(new MenuItem("Click here to reset"));
 		this.getMenuBar().getMenu(0).getItem(0).addActionListener(new MenuActionListener());
+		
+		//Content pane and buttons
 		this.setContentPane(new JPanel(new GridLayout(5, 5)));
 		this.makeButtons();
 	}
@@ -50,7 +62,7 @@ public class SoundboardFrame extends JFrame
 	{
 		@Override
 		public void actionPerformed(ActionEvent arg0)
-		{//When this happens, we want to refresh all the files
+		{//When this happens, we want to refresh all the files and buttons
 			Main.autoCheckFiles(true);
 			makeButtons();
 		}		

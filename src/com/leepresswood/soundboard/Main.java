@@ -20,7 +20,7 @@ public class Main
 		autoCheckFiles(false);
 		
 		//Create the board
-		SoundboardFrame board = new SoundboardFrame();
+		new SoundboardFrame();
 	}
 	
 	public static void autoCheckFiles(boolean reset_all)
