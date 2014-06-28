@@ -3,6 +3,8 @@ package com.leepresswood.soundboard;
 import java.awt.GridLayout;
 import java.awt.Menu;
 import java.awt.MenuBar;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -18,10 +20,10 @@ public class SoundboardFrame extends JFrame
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setMenuBar(new MenuBar());
-		this.getMenuBar().add(new Menu("Stuff"));
+		this.getMenuBar().add(new Menu("Messed something up? Click to set all buttons to default."));
+		this.getMenuBar().getMenu(0).addActionListener(new MenuActionListener());
 		this.setContentPane(new JPanel(new GridLayout(5, 5)));
 		this.makeButtons();
-		//this.pack();
 		this.setVisible(true);
 	}
 	
@@ -38,5 +40,14 @@ public class SoundboardFrame extends JFrame
 				buttons[y][x] = new SoundboardButton(button_number, getter.getPath(), getter.getText());
 				this.getContentPane().add(buttons[y][x]);
 			}
+	}
+	
+	private class MenuActionListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent arg0)
+		{//When this happens, we want to refresh all the files
+			Main.autoCheckFiles(true);
+		}		
 	}
 }

@@ -16,17 +16,22 @@ public class Main
 	
 	public static void main(String[] args)
 	{
-		//Auto-check to see we have all files
+		//Check files exist
+		autoCheckFiles(false);
+		
+		//Create the board
+		SoundboardFrame board = new SoundboardFrame();
+	}
+	
+	public static void autoCheckFiles(boolean reset_all)
+	{//Auto-check to see we have all files. Reset all can be called to reset everything.
 		for(int y = 0; y < NUMBER_BUTTONS_DOWN; y++)
 			for(int x = 0; x < NUMBER_BUTTONS_ACROSS; x++)
 			{
 				int button_num = y * 10 + x;
 				File file = new File(FILE_PATH_FRONT + button_num + FILE_EXTENSION);
-				if(!file.exists())
+				if(!file.exists() || reset_all)
 					new WriteToFile(button_num, DEFAULT_PATH, DEFAULT_BUTTON_TEXT);
-			}
-		
-		//Create the board
-		SoundboardFrame board = new SoundboardFrame();
+			}		
 	}
 }

@@ -17,6 +17,7 @@ public class GetFromFile
 
 	public String getText()
 	{
+		return null;
 		
 	}
 }
