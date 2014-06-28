@@ -12,7 +12,7 @@ public class Main
 	public static final String FILE_EXTENSION = ".sf";
 	
 	public static final String DEFAULT_PATH = "C://";
-	public static final String DEFAULT_BUTTON_TEXT = "Right click to change.";
+	public static final String DEFAULT_BUTTON_TEXT = "Right click to change";
 	
 	public static void main(String[] args)
 	{
