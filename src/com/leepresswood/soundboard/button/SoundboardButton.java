@@ -1,11 +1,15 @@
 package com.leepresswood.soundboard.button;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.net.MalformedURLException;
+import java.net.URL;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
@@ -99,7 +103,12 @@ public class SoundboardButton extends JButton
 	
 	private void onLeftClick()
 	{
-		
+		try {
+			AudioClip clip = Applet.newAudioClip(new URL("file:///" + file));
+			clip.play();
+		} catch (MalformedURLException murle) {
+			System.out.println(murle);
+		}
 	}
 	
 	private class MouseListenerButtonClass implements MouseListener
