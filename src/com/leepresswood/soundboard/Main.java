@@ -11,7 +11,7 @@ public class Main
 	public static final String FILE_PATH_FRONT = "files/";
 	public static final String FILE_EXTENSION = ".sf";
 	
-	public static final String DEFAULT_PATH = "C://";
+	public static final String DEFAULT_PATH = System.getProperty("user.dir");
 	public static final String DEFAULT_BUTTON_TEXT = "Right click to change";
 	
 	public static void main(String[] args)

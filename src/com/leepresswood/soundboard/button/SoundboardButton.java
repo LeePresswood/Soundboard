@@ -16,6 +16,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import com.leepresswood.soundboard.Main;
 import com.leepresswood.soundboard.SoundboardFrame;
 import com.leepresswood.soundboard.file.WriteToFile;
 
@@ -66,7 +67,7 @@ public class SoundboardButton extends JButton
 			@Override
 			public void actionPerformed(ActionEvent arg0)
 			{//Open a file chooser dialog.
-				final JFileChooser fc = new JFileChooser(System.getProperty("user.dir"));
+				final JFileChooser fc = new JFileChooser(Main.DEFAULT_PATH);
 				fc.showOpenDialog(SoundboardButton.this);
 				if(fc.getSelectedFile() != null)
 				{
