@@ -12,24 +12,26 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import com.leepresswood.soundboard.SoundboardFrame;
 import com.leepresswood.soundboard.file.WriteToFile;
 
 public class SoundboardButton extends JButton
 {
 	private int button_number;
-	private String old_file;
-	private String new_file;
-	private String old_text;
+	private String file;
+	private String text;
+	private SoundboardFrame frame;
 		
-	public SoundboardButton(int button_number, String button_path, String button_text)
+	public SoundboardButton(SoundboardFrame frame, int button_number, String button_path, String button_text)
 	{
 		//Grab variables
+		this.frame = frame;
 		this.button_number = button_number;
-		this.old_file = button_path;
-		this.old_text = button_text;
+		this.file = button_path;
+		this.text = button_text;
 		
 		//Create button
-		this.setText(this.old_text);
+		this.setText(this.text);
 		this.addMouseListener(new MouseListenerButtonClass());
 	}
 	
@@ -43,7 +45,7 @@ public class SoundboardButton extends JButton
 		dialog.setContentPane(new JPanel(new GridLayout(2, 3, 0, 3)));
 		
 		//File Chooser Row		
-		final JTextArea file_field = new JTextArea(this.old_file);
+		final JTextArea file_field = new JTextArea(this.file);
 		file_field.setEditable(false);
 		file_field.setLineWrap(true);
 		JButton file_button = new JButton("...");			
@@ -57,7 +59,7 @@ public class SoundboardButton extends JButton
 				if(fc.getSelectedFile() != null)
 				{
 					file_field.setText(fc.getSelectedFile().toPath().toString());
-					new_file = fc.getSelectedFile().toPath().toString();
+					file = fc.getSelectedFile().toPath().toString();
 				}
 			}
 		});	
@@ -66,18 +68,18 @@ public class SoundboardButton extends JButton
 		dialog.getContentPane().add(file_button);
 				
 		//Button Text Row
-		final JTextArea text_field = new JTextArea(this.old_text);
+		final JTextArea text_field = new JTextArea(this.text);
 		JButton text_button = new JButton("Confirm Changes");
 		text_button.addActionListener(new ActionListener()
 		{			
 			@Override
 			public void actionPerformed(ActionEvent arg0)
 			{//Confirmation button. Replace saved file and saved text with the new ones.
-				old_file = new_file;
-				old_text = text_field.getText();
-				new WriteToFile(button_number, old_file, old_text);
+				text = text_field.getText();
+				new WriteToFile(button_number, file, text);
 				
 				dialog.setVisible(false);
+				frame.makeButtons();
 			}
 		});		
 		dialog.getContentPane().add(new JLabel("Button Text:"));

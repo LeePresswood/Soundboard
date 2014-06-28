@@ -25,11 +25,11 @@ public class SoundboardFrame extends JFrame
 		this.getMenuBar().getMenu(0).getItem(0).addActionListener(new MenuActionListener());
 		this.setContentPane(new JPanel(new GridLayout(5, 5)));
 		this.makeButtons();
-		this.setVisible(true);
 	}
 	
-	private void makeButtons()
+	public void makeButtons()
 	{//There should be 5 rows of 5 buttons.
+		this.getContentPane().removeAll();		
 		SoundboardButton[][] buttons = new SoundboardButton[5][5];
 		
 		for(int y = 0; y < Main.NUMBER_BUTTONS_DOWN; y++)
@@ -38,9 +38,12 @@ public class SoundboardFrame extends JFrame
 				int button_number = y * 10 + x;
 				GetFromFile getter = new GetFromFile(button_number);
 				
-				buttons[y][x] = new SoundboardButton(button_number, getter.getPath(), getter.getText());
+				buttons[y][x] = new SoundboardButton(this, button_number, getter.getPath(), getter.getText());
 				this.getContentPane().add(buttons[y][x]);
 			}
+		
+		this.repaint();
+		this.setVisible(true);
 	}
 	
 	private class MenuActionListener implements ActionListener
@@ -49,6 +52,7 @@ public class SoundboardFrame extends JFrame
 		public void actionPerformed(ActionEvent arg0)
 		{//When this happens, we want to refresh all the files
 			Main.autoCheckFiles(true);
+			makeButtons();
 		}		
 	}
 }
