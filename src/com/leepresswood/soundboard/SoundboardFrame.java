@@ -6,6 +6,8 @@ import java.awt.MenuBar;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import com.leepresswood.soundboard.button.SoundboardButton;
+import com.leepresswood.soundboard.file.GetFromFile;
 
 public class SoundboardFrame extends JFrame
 {
@@ -30,7 +32,10 @@ public class SoundboardFrame extends JFrame
 		for(int y = 0; y < 5; y++)
 			for(int x = 0; x < 5; x++)
 			{
-				buttons[y][x] = new SoundboardButton(y * 10 + x);
+				int button_number = y * 10 + x;
+				GetFromFile getter = new GetFromFile(button_number);
+				
+				buttons[y][x] = new SoundboardButton(button_number, getter.getPath(), getter.getText());
 				this.getContentPane().add(buttons[y][x]);
 			}
 	}

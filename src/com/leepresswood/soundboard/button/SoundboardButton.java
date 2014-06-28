@@ -1,4 +1,4 @@
-package com.leepresswood.soundboard;
+package com.leepresswood.soundboard.button;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -78,7 +78,7 @@ public class SoundboardButton extends JButton
 		{			
 			@Override
 			public void actionPerformed(ActionEvent arg0)
-			{
+			{//Open a file chooser dialog.
 				final JFileChooser fc = new JFileChooser();
 				fc.showOpenDialog(SoundboardButton.this);
 				if(fc.getSelectedFile() != null)
@@ -99,7 +99,7 @@ public class SoundboardButton extends JButton
 		{			
 			@Override
 			public void actionPerformed(ActionEvent arg0)
-			{
+			{//Confirmation button. Replace saved file and saved text with the new ones.
 				
 			}
 		});		
