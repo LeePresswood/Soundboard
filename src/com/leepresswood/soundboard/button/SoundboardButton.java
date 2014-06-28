@@ -24,41 +24,21 @@ import javax.swing.SpringLayout;
 public class SoundboardButton extends JButton
 {
 	private int button_number;
-	private File old_file;
-	private File new_file;
+	private String old_file;
+	private String new_file;
 	private String old_text;
 	private String new_text;
 		
 	public SoundboardButton(int button_number, String button_path, String button_text)
 	{
+		//Grab variables
 		this.button_number = button_number;
+		this.old_file = button_path;
+		this.old_text = button_text;
 		
-		//Create the mouse listener that handles right and left clicks
-		this.addMouseListener(new MouseListener()
-		{
-			@Override
-			public void mouseReleased(MouseEvent arg0){}
-			
-			@Override
-			public void mousePressed(MouseEvent arg0)
-			{
-				if(arg0.getButton() == MouseEvent.BUTTON1)
-					onLeftClick();
-				else if(arg0.getButton() == MouseEvent.BUTTON3)
-					onRightClick();
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent arg0){}
-			
-			@Override
-			public void mouseEntered(MouseEvent arg0){}
-			
-			@Override
-			public void mouseClicked(MouseEvent arg0){}
-		});
-		
-		//this.setText(text);
+		//Create button
+		this.setText(this.old_text);
+		this.addMouseListener(new MouseListenerButtonClass());
 	}
 	
 	private void onRightClick()
@@ -112,5 +92,37 @@ public class SoundboardButton extends JButton
 	private void onLeftClick()
 	{
 		
+	}
+	
+	private class MouseListenerButtonClass implements MouseListener
+	{//Create the mouse listener that handles right and left clicks
+		@Override
+		public void mouseClicked(MouseEvent arg0)
+		{
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent arg0)
+		{
+		}
+
+		@Override
+		public void mouseExited(MouseEvent arg0)
+		{
+		}
+
+		@Override
+		public void mousePressed(MouseEvent arg0)
+		{
+			if(arg0.getButton() == MouseEvent.BUTTON1)
+				onLeftClick();
+			else if(arg0.getButton() == MouseEvent.BUTTON3)
+				onRightClick();
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent arg0)
+		{
+		}		
 	}
 }
