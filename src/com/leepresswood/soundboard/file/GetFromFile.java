@@ -4,7 +4,7 @@ public class GetFromFile
 {
 
 	public GetFromFile(int button_number)
-	{
+	{//Read from the file for the particular button to get the path and text
 		
 	}
 
