@@ -36,14 +36,16 @@ public class SoundboardButton extends JButton
 	private void onRightClick()
 	{		
 		final JDialog dialog = new JDialog();
-		dialog.setSize(new Dimension(500, 350));
+		dialog.setSize(new Dimension(700, 500));
 		dialog.setResizable(false);		
 		dialog.setPreferredSize(dialog.getSize());
 		dialog.setMinimumSize(dialog.getSize());
 		dialog.setContentPane(new JPanel(new GridLayout(2, 3, 0, 3)));
 		
 		//File Chooser Row		
-		final JTextArea file_field = new JTextArea();
+		final JTextArea file_field = new JTextArea(this.old_file);
+		file_field.setEditable(false);
+		file_field.setLineWrap(true);
 		JButton file_button = new JButton("...");			
 		file_button.addActionListener(new ActionListener()
 		{			
@@ -64,7 +66,7 @@ public class SoundboardButton extends JButton
 		dialog.getContentPane().add(file_button);
 				
 		//Button Text Row
-		final JTextArea text_field = new JTextArea();
+		final JTextArea text_field = new JTextArea(this.old_text);
 		JButton text_button = new JButton("Confirm Changes");
 		text_button.addActionListener(new ActionListener()
 		{			
