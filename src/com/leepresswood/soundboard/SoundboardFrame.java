@@ -35,7 +35,7 @@ public class SoundboardFrame extends JFrame
 		this.getMenuBar().getMenu(0).getItem(0).addActionListener(new MenuActionListener());
 		
 		//Content pane and buttons
-		this.setContentPane(new JPanel(new GridLayout(5, 5)));
+		this.setContentPane(new JPanel(new GridLayout(Main.NUMBER_BUTTONS_DOWN, Main.NUMBER_BUTTONS_ACROSS)));
 		this.makeButtons();
 	}
 	
