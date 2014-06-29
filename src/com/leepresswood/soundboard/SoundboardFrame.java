@@ -42,12 +42,12 @@ public class SoundboardFrame extends JFrame
 	public void makeButtons()
 	{//There should be 5 rows of 5 buttons.
 		this.getContentPane().removeAll();		
-		SoundboardButton[][] buttons = new SoundboardButton[5][5];
+		SoundboardButton[][] buttons = new SoundboardButton[Main.NUMBER_BUTTONS_DOWN][Main.NUMBER_BUTTONS_ACROSS];
 		
 		for(int y = 0; y < Main.NUMBER_BUTTONS_DOWN; y++)
 			for(int x = 0; x < Main.NUMBER_BUTTONS_ACROSS; x++)
 			{
-				int button_number = y * 10 + x;
+				int button_number = Main.getButtonNumber(x, y);
 				GetFromFile getter = new GetFromFile(button_number);
 				
 				buttons[y][x] = new SoundboardButton(this, button_number, getter.getPath(), getter.getText());

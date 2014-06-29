@@ -28,10 +28,15 @@ public class Main
 		for(int y = 0; y < NUMBER_BUTTONS_DOWN; y++)
 			for(int x = 0; x < NUMBER_BUTTONS_ACROSS; x++)
 			{
-				int button_num = y * 10 + x;
-				File file = new File(FILE_PATH_FRONT + button_num + FILE_EXTENSION);
+				int button_number = getButtonNumber(x, y);
+				File file = new File(FILE_PATH_FRONT + button_number + FILE_EXTENSION);
 				if(!file.exists() || reset_all)
-					new WriteToFile(button_num, DEFAULT_PATH, DEFAULT_BUTTON_TEXT);
+					new WriteToFile(button_number, DEFAULT_PATH, DEFAULT_BUTTON_TEXT);
 			}		
+	}
+	
+	public static int getButtonNumber(int x, int y)
+	{//Get the button number from the x and y values.
+		return y * 10 + x;
 	}
 }
