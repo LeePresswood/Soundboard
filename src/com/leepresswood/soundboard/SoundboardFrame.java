@@ -24,7 +24,7 @@ public class SoundboardFrame extends JFrame
 	private void initialize()
 	{//Initialize the frame.
 		//Frame properties
-		this.setSize(1080, 720);
+		this.setSize(800, 500);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setMenuBar(new MenuBar());
