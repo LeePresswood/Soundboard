@@ -45,7 +45,7 @@ public class SoundboardButton extends JButton
 	private JDialog makeDialog()
 	{
 		final JDialog dialog = new JDialog();
-		dialog.setSize(new Dimension(700, 500));
+		dialog.setSize(new Dimension(800, 100));
 		dialog.setResizable(false);		
 		dialog.setPreferredSize(dialog.getSize());
 		dialog.setMinimumSize(dialog.getSize());
@@ -89,8 +89,7 @@ public class SoundboardButton extends JButton
 			public void actionPerformed(ActionEvent arg0)
 			{//Confirmation button. Replace saved file and saved text with the new ones.
 				text = text_field.getText();
-				new WriteToFile(button_number, file, text);
-				
+				new WriteToFile(button_number, file, text);				
 				dialog.setVisible(false);
 				frame.makeButtons();
 			}
